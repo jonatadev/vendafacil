@@ -1,4 +1,4 @@
 # vendafacil
 Venda Fácil — Tecnologia aberta para o pequeno empreendedor
 
-![VendaFácil](VendaFácil.png)
+![VendaFácil](img/VendaFácil.png)
