@@ -37,7 +37,7 @@ function Header({ isCartOpen, setIsCartOpen, config, onLoginClick, onAccountClic
     setIsCartOpen: (open: boolean) => void, 
     config: StoreConfig,
     onLoginClick: () => void,
-    onAccountClick: () => void
+    onAccountClick: (tabIndex?: number) => void
 }) {
   const { cart } = useCart();
   const itemCount = cart.items.reduce((sum, item) => sum + item.quantity, 0);

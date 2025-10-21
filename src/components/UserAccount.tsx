@@ -193,7 +193,7 @@ const UserAccount = ({ onBack, initialTab = 0 }: UserAccountProps) => {
                         <Grid item xs={12} md={6}>
                             <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
                                 <Avatar
-                                    src={isEditing ? profilePhoto || undefined : user.profilePhoto || undefined}
+                                    src={isEditing ? (profilePhoto ?? undefined) : (user.profilePhoto ?? undefined)}
                                     sx={{ width: 80, height: 80, mr: 2 }}
                                 >
                                     {user.name.charAt(0).toUpperCase()}

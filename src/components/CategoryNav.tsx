@@ -1,4 +1,4 @@
-import { Box, List, ListItem, ListItemButton, ListItemText, Typography, Paper } from '@mui/material';
+import { List, ListItem, ListItemButton, ListItemText, Typography, Paper } from '@mui/material';
 import { Category } from '../types';
 
 interface CategoryNavProps {

@@ -32,7 +32,9 @@ npm run dev
 3. Selecione "GitHub Actions" como source
 4. O deploy será automático a cada push na branch main
 
-URL: `https://seu-usuario.github.io/vendafacil/`
+**URLs de Acesso:**
+- Loja: https://jonatadev.github.io/vendafacil/
+- Painel Admin: https://jonatadev.github.io/vendafacil/admin
 
 ## 🎨 Protótipo de Interface — VendaFácil
 
