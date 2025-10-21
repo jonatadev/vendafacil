@@ -11,6 +11,7 @@ import {
     Grid
 } from '@mui/material';
 import { useUser } from '../contexts/UserContext';
+import { useBackoffice } from '../contexts/BackofficeContext';
 
 interface UserLoginProps {
     onClose: () => void;
@@ -44,6 +45,7 @@ const UserLogin = ({ onClose }: UserLoginProps) => {
     });
     const [error, setError] = useState('');
     const { login, register } = useUser();
+    const { addCustomer } = useBackoffice();
 
     const handleLogin = () => {
         if (login(loginData.email, loginData.password)) {
@@ -60,7 +62,7 @@ const UserLogin = ({ onClose }: UserLoginProps) => {
         }
         
         const { confirmPassword, password, ...userData } = registerData;
-        if (register(userData)) {
+        if (register(userData, addCustomer)) {
             onClose();
         } else {
             setError('Erro ao criar conta');

@@ -8,6 +8,7 @@ interface CartContextType {
     removeFromCart: (productId: number) => void;
     updateQuantity: (productId: number, quantity: number) => void;
     clearCart: () => void;
+    processOrder: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -103,8 +104,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         setCart({ items: [], total: 0 });
     };
 
+    const processOrder = () => {
+        // Esta função será chamada quando o pedido for finalizado
+        // para atualizar o estoque dos produtos
+        clearCart();
+    };
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, processOrder }}>
             {children}
         </CartContext.Provider>
     );

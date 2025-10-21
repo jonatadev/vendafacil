@@ -29,6 +29,7 @@ import {
 import { Add, Edit, Delete, CloudUpload } from '@mui/icons-material';
 import { useBackoffice } from '../contexts/BackofficeContext';
 import { loadStoreConfig, saveStoreConfig, StoreConfig } from '../config/store';
+import { resizeImage } from '../utils/imageUtils';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -83,27 +84,27 @@ const Settings = () => {
         saveStoreConfig(newConfig);
     };
 
-    const handleHeaderImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleHeaderImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const result = e.target?.result as string;
-                handleHeaderChange('backgroundImage', result);
-            };
-            reader.readAsDataURL(file);
+            try {
+                const resizedImage = await resizeImage(file, 1920, 160, 0.9);
+                handleHeaderChange('backgroundImage', resizedImage);
+            } catch (error) {
+                console.error('Erro ao redimensionar imagem:', error);
+            }
         }
     };
 
-    const handleLogoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleLogoUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const result = e.target?.result as string;
-                handleStoreConfigChange('logo', result);
-            };
-            reader.readAsDataURL(file);
+            try {
+                const resizedImage = await resizeImage(file, 300, 80, 0.9);
+                handleStoreConfigChange('logo', resizedImage);
+            } catch (error) {
+                console.error('Erro ao redimensionar imagem:', error);
+            }
         }
     };
 

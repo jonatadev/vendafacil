@@ -151,7 +151,7 @@ const Cart = ({ onCheckout }: CartProps) => {
                 </CardContent>
             </Card>
 
-            <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end' }}>
+            <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end', mb: 4 }}>
                 <Button
                     variant="outlined"
                     color="secondary"

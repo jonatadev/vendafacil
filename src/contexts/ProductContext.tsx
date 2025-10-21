@@ -38,6 +38,51 @@ const initialProducts: Product[] = [
         imageUrl: 'racao_gourmet.png',
         stock: 8,
         category: 'racao'
+    },
+    {
+        id: 4,
+        name: 'Bola de Borracha',
+        description: 'Brinquedo resistente para cães de todos os tamanhos.',
+        price: 19.9,
+        imageUrl: 'bola_borracha.png',
+        stock: 25,
+        category: 'brinquedos'
+    },
+    {
+        id: 5,
+        name: 'Corda Dental',
+        description: 'Brinquedo que ajuda na limpeza dos dentes.',
+        price: 15.5,
+        imageUrl: 'corda_dental.png',
+        stock: 18,
+        category: 'brinquedos'
+    },
+    {
+        id: 6,
+        name: 'Coleira Ajustável',
+        description: 'Coleira confortável e resistente com fivela de segurança.',
+        price: 35.0,
+        imageUrl: 'coleira_ajustavel.png',
+        stock: 12,
+        category: 'acessorios'
+    },
+    {
+        id: 7,
+        name: 'Comedouro Inox',
+        description: 'Comedouro em aço inoxidável, higiênico e durável.',
+        price: 28.9,
+        imageUrl: 'comedouro_inox.png',
+        stock: 15,
+        category: 'acessorios'
+    },
+    {
+        id: 8,
+        name: 'Osso de Couro',
+        description: 'Osso natural para entretenimento e limpeza dental.',
+        price: 12.5,
+        imageUrl: 'osso_couro.png',
+        stock: 30,
+        category: 'brinquedos'
     }
 ];
 

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
-import { Product, Order } from '../types';
+import { Product, Order, Customer } from '../types';
 
 interface User {
     id: number;
@@ -7,6 +7,13 @@ interface User {
     email: string;
     phone: string;
     address: string;
+    cep?: string;
+    number?: string;
+    complement?: string;
+    neighborhood?: string;
+    city?: string;
+    state?: string;
+    profilePhoto?: string;
     createdAt: Date;
 }
 
@@ -15,11 +22,12 @@ interface UserContextType {
     wishlist: Product[];
     userOrders: Order[];
     login: (email: string, password: string) => boolean;
-    register: (userData: Omit<User, 'id' | 'createdAt'>) => boolean;
+    register: (userData: Omit<User, 'id' | 'createdAt'>, addCustomer?: (customer: Omit<Customer, 'id'>) => void) => boolean;
     logout: () => void;
     addToWishlist: (product: Product) => void;
     removeFromWishlist: (productId: number) => void;
     addUserOrder: (order: Order) => void;
+    updateUser: (updates: Partial<Pick<User, 'name' | 'phone' | 'address' | 'cep' | 'number' | 'complement' | 'neighborhood' | 'city' | 'state' | 'profilePhoto'>>) => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -64,7 +72,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         return false;
     };
 
-    const register = (userData: Omit<User, 'id' | 'createdAt'>): boolean => {
+    const register = (userData: Omit<User, 'id' | 'createdAt'>, addCustomer?: (customer: Omit<Customer, 'id'>) => void): boolean => {
         const newUser = {
             ...userData,
             id: Date.now(),
@@ -72,6 +80,19 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         };
         setUser(newUser);
         localStorage.setItem('current_user', JSON.stringify(newUser));
+        
+        // Adicionar ao backoffice se a função for fornecida
+        if (addCustomer) {
+            addCustomer({
+                name: newUser.name,
+                email: newUser.email,
+                phone: newUser.phone,
+                address: newUser.address,
+                orders: [],
+                createdAt: new Date()
+            });
+        }
+        
         return true;
     };
 
@@ -96,6 +117,14 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         setUserOrders(prev => [...prev, order]);
     };
 
+    const updateUser = (updates: Partial<Pick<User, 'name' | 'phone' | 'address' | 'cep' | 'number' | 'complement' | 'neighborhood' | 'city' | 'state' | 'profilePhoto'>>) => {
+        if (user) {
+            const updatedUser = { ...user, ...updates };
+            setUser(updatedUser);
+            localStorage.setItem('current_user', JSON.stringify(updatedUser));
+        }
+    };
+
     return (
         <UserContext.Provider value={{
             user,
@@ -106,7 +135,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             logout,
             addToWishlist,
             removeFromWishlist,
-            addUserOrder
+            addUserOrder,
+            updateUser
         }}>
             {children}
         </UserContext.Provider>

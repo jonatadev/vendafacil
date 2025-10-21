@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import { CssBaseline, Container, AppBar, Toolbar, Typography, IconButton, Badge, Box, ThemeProvider, createTheme } from '@mui/material';
+import { CssBaseline, Container, AppBar, Toolbar, Typography, IconButton, Badge, Box, ThemeProvider, createTheme, Grid } from '@mui/material';
 import { ShoppingCart as ShoppingCartIcon } from '@mui/icons-material';
 import { CartProvider, useCart } from './contexts/CartContext';
 import { ProductProvider, useProducts } from './contexts/ProductContext';
@@ -99,6 +99,7 @@ function StorePage() {
     const [isCheckout, setIsCheckout] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const [showAccount, setShowAccount] = useState(false);
+    const [accountTab, setAccountTab] = useState(0);
     const [config, setConfig] = useState<StoreConfig>(loadStoreConfig());
 
     useEffect(() => {
@@ -206,7 +207,10 @@ function StorePage() {
                         setIsCartOpen={setIsCartOpen} 
                         config={config}
                         onLoginClick={() => setShowLogin(true)}
-                        onAccountClick={() => setShowAccount(true)}
+                        onAccountClick={(tabIndex) => {
+                            setShowAccount(true);
+                            if (tabIndex !== undefined) setAccountTab(tabIndex);
+                        }}
                     />
                     <MainNavigation
                         categories={categories}
@@ -226,7 +230,10 @@ function StorePage() {
                     {showLogin ? (
                         <UserLogin onClose={() => setShowLogin(false)} />
                     ) : showAccount ? (
-                        <UserAccount onBack={() => setShowAccount(false)} />
+                        <UserAccount 
+                            onBack={() => setShowAccount(false)} 
+                            initialTab={accountTab}
+                        />
                     ) : isCheckout ? (
                         <Checkout onBack={handleBackFromCheckout} />
                     ) : isCartOpen ? (
@@ -245,22 +252,28 @@ function StorePage() {
                                 categories={categories}
                                 onCategoryChange={setSelectedCategory}
                             />
-                            <CategoryNav
-                                categories={categories}
-                                selectedCategory={selectedCategory}
-                                onCategoryChange={setSelectedCategory}
-                                productCounts={productCounts}
-                            />
-                            <ProductFilters
-                                onSearchChange={setSearchTerm}
-                                onPriceRangeChange={setPriceRange}
-                                onSortChange={setSortBy}
-                                maxPrice={maxPrice}
-                            />
-                            <ProductList 
-                                products={filteredProducts} 
-                                onProductClick={handleProductClick}
-                            />
+                            <Grid container spacing={3}>
+                                <Grid item xs={12} md={3}>
+                                    <CategoryNav
+                                        categories={categories}
+                                        selectedCategory={selectedCategory}
+                                        onCategoryChange={setSelectedCategory}
+                                        productCounts={productCounts}
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={9}>
+                                    <ProductFilters
+                                        onSearchChange={setSearchTerm}
+                                        onPriceRangeChange={setPriceRange}
+                                        onSortChange={setSortBy}
+                                        maxPrice={maxPrice}
+                                    />
+                                    <ProductList 
+                                        products={filteredProducts} 
+                                        onProductClick={handleProductClick}
+                                    />
+                                </Grid>
+                            </Grid>
                         </>
                     )}
                         </Box>

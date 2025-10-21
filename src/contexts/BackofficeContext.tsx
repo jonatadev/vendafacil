@@ -72,25 +72,37 @@ const mockShippingConfig: ShippingConfig = {
 };
 
 export const BackofficeProvider = ({ children }: { children: ReactNode }) => {
-    const [orders, setOrders] = useState<Order[]>(mockOrders);
-    const [customers, setCustomers] = useState<Customer[]>(mockCustomers);
+    const [orders, setOrders] = useState<Order[]>(() => {
+        const saved = localStorage.getItem('backoffice_orders');
+        return saved ? JSON.parse(saved) : mockOrders;
+    });
+    const [customers, setCustomers] = useState<Customer[]>(() => {
+        const saved = localStorage.getItem('backoffice_customers');
+        return saved ? JSON.parse(saved) : mockCustomers;
+    });
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>(mockPaymentMethods);
     const [shippingConfig, setShippingConfig] = useState<ShippingConfig>(mockShippingConfig);
 
     const addOrder = (orderData: Omit<Order, 'id'>) => {
-        const newId = Math.max(...orders.map(o => o.id)) + 1;
+        const newId = Math.max(...orders.map(o => o.id), 0) + 1;
         const newOrder = { ...orderData, id: newId };
-        setOrders(prev => [...prev, newOrder]);
+        const updatedOrders = [...orders, newOrder];
+        setOrders(updatedOrders);
+        localStorage.setItem('backoffice_orders', JSON.stringify(updatedOrders));
     };
 
     const updateOrderStatus = (id: number, status: Order['status']) => {
-        setOrders(prev => prev.map(o => o.id === id ? { ...o, status } : o));
+        const updatedOrders = orders.map(o => o.id === id ? { ...o, status } : o);
+        setOrders(updatedOrders);
+        localStorage.setItem('backoffice_orders', JSON.stringify(updatedOrders));
     };
 
     const addCustomer = (customerData: Omit<Customer, 'id'>) => {
-        const newId = Math.max(...customers.map(c => c.id)) + 1;
+        const newId = Math.max(...customers.map(c => c.id), 0) + 1;
         const newCustomer = { ...customerData, id: newId };
-        setCustomers(prev => [...prev, newCustomer]);
+        const updatedCustomers = [...customers, newCustomer];
+        setCustomers(updatedCustomers);
+        localStorage.setItem('backoffice_customers', JSON.stringify(updatedCustomers));
     };
 
     const updatePaymentMethod = (id: string, updates: Partial<PaymentMethod>) => {

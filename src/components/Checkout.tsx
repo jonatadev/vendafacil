@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
     Box,
     Typography,
@@ -20,13 +20,17 @@ import {
 } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
 import { useCart } from '../contexts/CartContext';
+import { useUser } from '../contexts/UserContext';
+import { useBackoffice } from '../contexts/BackofficeContext';
 
 interface CheckoutProps {
     onBack: () => void;
 }
 
 const Checkout = ({ onBack }: CheckoutProps) => {
-    const { cart, clearCart } = useCart();
+    const { cart, processOrder } = useCart();
+    const { user, addUserOrder } = useUser();
+    const { addOrder, addCustomer } = useBackoffice();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -41,6 +45,24 @@ const Checkout = ({ onBack }: CheckoutProps) => {
         paymentMethod: 'credit'
     });
 
+    useEffect(() => {
+        if (user) {
+            setFormData(prev => ({
+                ...prev,
+                name: user.name,
+                email: user.email,
+                phone: user.phone,
+                cep: user.cep || '',
+                address: user.address,
+                number: user.number || '',
+                complement: user.complement || '',
+                neighborhood: user.neighborhood || '',
+                city: user.city || '',
+                state: user.state || ''
+            }));
+        }
+    }, [user]);
+
     const subtotal = cart.total;
     const shipping = subtotal > 100 ? 0 : 15;
     const total = subtotal + shipping;
@@ -50,6 +72,37 @@ const Checkout = ({ onBack }: CheckoutProps) => {
     };
 
     const handleSubmit = () => {
+        // Criar pedido
+        const newOrder = {
+            items: cart.items,
+            total,
+            status: 'pending' as const,
+            customerName: formData.name,
+            customerEmail: formData.email,
+            customerPhone: formData.phone,
+            address: `${formData.address}, ${formData.number} ${formData.complement ? '- ' + formData.complement : ''}, ${formData.neighborhood}, ${formData.city}/${formData.state}, CEP: ${formData.cep}`,
+            paymentMethod: formData.paymentMethod,
+            createdAt: new Date()
+        };
+        
+        // Adicionar ao backoffice
+        addOrder(newOrder);
+        
+        // Adicionar ao histórico do usuário se logado
+        if (user) {
+            addUserOrder({ ...newOrder, id: Date.now() });
+        } else {
+            // Criar cliente se não estiver logado
+            addCustomer({
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                address: newOrder.address,
+                orders: [],
+                createdAt: new Date()
+            });
+        }
+        
         let message = 'Pedido realizado com sucesso!\n\n';
         
         switch (formData.paymentMethod) {
@@ -73,7 +126,7 @@ const Checkout = ({ onBack }: CheckoutProps) => {
         
         message += `\n\nTotal: R$ ${total.toFixed(2)}`;
         alert(message);
-        clearCart();
+        processOrder();
         onBack();
     };
 
@@ -193,10 +246,33 @@ const Checkout = ({ onBack }: CheckoutProps) => {
                                         label="Estado"
                                         onChange={(e) => handleInputChange('state', e.target.value)}
                                     >
-                                        <MenuItem value="SP">São Paulo</MenuItem>
-                                        <MenuItem value="RJ">Rio de Janeiro</MenuItem>
+                                        <MenuItem value="AC">Acre</MenuItem>
+                                        <MenuItem value="AL">Alagoas</MenuItem>
+                                        <MenuItem value="AP">Amapá</MenuItem>
+                                        <MenuItem value="AM">Amazonas</MenuItem>
+                                        <MenuItem value="BA">Bahia</MenuItem>
+                                        <MenuItem value="CE">Ceará</MenuItem>
+                                        <MenuItem value="DF">Distrito Federal</MenuItem>
+                                        <MenuItem value="ES">Espírito Santo</MenuItem>
+                                        <MenuItem value="GO">Goiás</MenuItem>
+                                        <MenuItem value="MA">Maranhão</MenuItem>
+                                        <MenuItem value="MT">Mato Grosso</MenuItem>
+                                        <MenuItem value="MS">Mato Grosso do Sul</MenuItem>
                                         <MenuItem value="MG">Minas Gerais</MenuItem>
+                                        <MenuItem value="PA">Pará</MenuItem>
+                                        <MenuItem value="PB">Paraíba</MenuItem>
+                                        <MenuItem value="PR">Paraná</MenuItem>
+                                        <MenuItem value="PE">Pernambuco</MenuItem>
+                                        <MenuItem value="PI">Piauí</MenuItem>
+                                        <MenuItem value="RJ">Rio de Janeiro</MenuItem>
+                                        <MenuItem value="RN">Rio Grande do Norte</MenuItem>
                                         <MenuItem value="RS">Rio Grande do Sul</MenuItem>
+                                        <MenuItem value="RO">Rondônia</MenuItem>
+                                        <MenuItem value="RR">Roraima</MenuItem>
+                                        <MenuItem value="SC">Santa Catarina</MenuItem>
+                                        <MenuItem value="SP">São Paulo</MenuItem>
+                                        <MenuItem value="SE">Sergipe</MenuItem>
+                                        <MenuItem value="TO">Tocantins</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Grid>

@@ -32,10 +32,10 @@ const ProductCard = ({ product, onProductClick }: ProductCardProps) => {
     };
 
     return (
-        <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <Card sx={{ height: 380, display: 'flex', flexDirection: 'column' }}>
             <CardMedia
                 component="img"
-                height="200"
+                height="160"
                 image={imgError ? FALLBACK_IMAGE : resolveProductImage(product.imageUrl)}
                 alt={product.name}
                 onError={() => setImgError(true)}
@@ -44,21 +44,22 @@ const ProductCard = ({ product, onProductClick }: ProductCardProps) => {
             <CardContent 
                 sx={{ 
                     flexGrow: 1,
-                    cursor: onProductClick ? 'pointer' : 'default'
+                    cursor: onProductClick ? 'pointer' : 'default',
+                    p: 2
                 }}
                 onClick={() => onProductClick?.(product)}
             >
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography gutterBottom variant="h6" component="h2" sx={{ fontSize: '1.1rem' }}>
                     {product.name}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontSize: '0.85rem' }}>
                     {product.description}
                 </Typography>
-                <Typography variant="h6" color="primary" sx={{ mt: 2 }}>
+                <Typography variant="h6" color="primary" sx={{ mt: 1, fontSize: '1.2rem' }}>
                     R$ {product.price.toFixed(2)}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Em estoque: {product.stock}
+                <Typography variant="caption" color="text.secondary">
+                    Estoque: {product.stock}
                 </Typography>
             </CardContent>
             <CardActions>
@@ -70,7 +71,7 @@ const ProductCard = ({ product, onProductClick }: ProductCardProps) => {
                     disabled={product.stock === 0}
                     sx={{ flexGrow: 1 }}
                 >
-                    Adicionar ao Carrinho
+                    Comprar
                 </Button>
                 {user && (
                     <IconButton

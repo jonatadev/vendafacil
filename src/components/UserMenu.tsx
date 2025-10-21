@@ -21,7 +21,7 @@ import { useUser } from '../contexts/UserContext';
 
 interface UserMenuProps {
     onLoginClick: () => void;
-    onAccountClick: () => void;
+    onAccountClick: (tabIndex?: number) => void;
 }
 
 const UserMenu = ({ onLoginClick, onAccountClick }: UserMenuProps) => {
@@ -41,8 +41,8 @@ const UserMenu = ({ onLoginClick, onAccountClick }: UserMenuProps) => {
         handleClose();
     };
 
-    const handleAccount = () => {
-        onAccountClick();
+    const handleAccount = (tabIndex?: number) => {
+        onAccountClick(tabIndex);
         handleClose();
     };
 
@@ -53,8 +53,11 @@ const UserMenu = ({ onLoginClick, onAccountClick }: UserMenuProps) => {
                 onClick={handleClick}
                 sx={{ ml: 1 }}
             >
-                <Avatar sx={{ width: 32, height: 32 }}>
-                    <AccountCircle />
+                <Avatar 
+                    src={user?.profilePhoto}
+                    sx={{ width: 32, height: 32 }}
+                >
+                    {user ? user.name.charAt(0).toUpperCase() : <AccountCircle />}
                 </Avatar>
             </IconButton>
 
@@ -73,15 +76,15 @@ const UserMenu = ({ onLoginClick, onAccountClick }: UserMenuProps) => {
                             </Typography>
                         </MenuItem>,
                         <Divider key="divider1" />,
-                        <MenuItem key="account" onClick={handleAccount}>
+                        <MenuItem key="account" onClick={() => handleAccount(0)}>
                             <ListItemIcon><AccountCircle /></ListItemIcon>
                             <ListItemText>Minha Conta</ListItemText>
                         </MenuItem>,
-                        <MenuItem key="orders" onClick={handleAccount}>
+                        <MenuItem key="orders" onClick={() => handleAccount(1)}>
                             <ListItemIcon><ShoppingBag /></ListItemIcon>
                             <ListItemText>Meus Pedidos</ListItemText>
                         </MenuItem>,
-                        <MenuItem key="favorites" onClick={handleAccount}>
+                        <MenuItem key="favorites" onClick={() => handleAccount(2)}>
                             <ListItemIcon><Favorite /></ListItemIcon>
                             <ListItemText>Lista de Desejos</ListItemText>
                         </MenuItem>,

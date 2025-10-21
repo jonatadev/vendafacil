@@ -1,5 +1,4 @@
-import { Box, Card, CardContent, Typography, Badge, Grid } from '@mui/material';
-import { Pets, SportsEsports, Diamond } from '@mui/icons-material';
+import { Box, List, ListItem, ListItemButton, ListItemText, Typography, Paper } from '@mui/material';
 import { Category } from '../types';
 
 interface CategoryNavProps {
@@ -10,63 +9,36 @@ interface CategoryNavProps {
 }
 
 const CategoryNav = ({ categories, selectedCategory, onCategoryChange, productCounts }: CategoryNavProps) => {
-    const categoryIcons = {
-        racao: <Pets sx={{ fontSize: 40, color: 'primary.main' }} />,
-        brinquedos: <SportsEsports sx={{ fontSize: 40, color: 'primary.main' }} />,
-        acessorios: <Diamond sx={{ fontSize: 40, color: 'primary.main' }} />
-    };
-
     return (
-        <Box sx={{ mb: 3 }}>
+        <Paper sx={{ p: 2, height: 'fit-content' }}>
             <Typography variant="h6" gutterBottom>
                 Categorias
             </Typography>
-            <Grid container spacing={2}>
-                <Grid item xs={3}>
-                    <Card 
-                        sx={{ 
-                            cursor: 'pointer',
-                            border: selectedCategory === 'all' ? 2 : 1,
-                            borderColor: selectedCategory === 'all' ? 'primary.main' : 'divider',
-                            '&:hover': { boxShadow: 4 }
-                        }}
+            <List dense>
+                <ListItem disablePadding>
+                    <ListItemButton
+                        selected={selectedCategory === 'all'}
                         onClick={() => onCategoryChange('all')}
                     >
-                        <CardContent sx={{ textAlign: 'center', py: 2 }}>
-                            <Box sx={{ mb: 1 }}>
-                                <Typography variant="h4">🏠</Typography>
-                            </Box>
-                            <Typography variant="h6">Todos</Typography>
-                            <Badge badgeContent={productCounts.all} color="primary" />
-                        </CardContent>
-                    </Card>
-                </Grid>
+                        <ListItemText 
+                            primary={`Todos (${productCounts.all})`}
+                        />
+                    </ListItemButton>
+                </ListItem>
                 {categories.map((category) => (
-                    <Grid item xs={3} key={category.id}>
-                        <Card 
-                            sx={{ 
-                                cursor: 'pointer',
-                                border: selectedCategory === category.id ? 2 : 1,
-                                borderColor: selectedCategory === category.id ? 'primary.main' : 'divider',
-                                '&:hover': { boxShadow: 4 }
-                            }}
+                    <ListItem key={category.id} disablePadding>
+                        <ListItemButton
+                            selected={selectedCategory === category.id}
                             onClick={() => onCategoryChange(category.id)}
                         >
-                            <CardContent sx={{ textAlign: 'center', py: 2 }}>
-                                <Box sx={{ mb: 1 }}>
-                                    {categoryIcons[category.id as keyof typeof categoryIcons]}
-                                </Box>
-                                <Typography variant="h6">{category.name}</Typography>
-                                <Badge 
-                                    badgeContent={productCounts[category.id] || 0} 
-                                    color="primary" 
-                                />
-                            </CardContent>
-                        </Card>
-                    </Grid>
+                            <ListItemText 
+                                primary={`${category.name} (${productCounts[category.id] || 0})`}
+                            />
+                        </ListItemButton>
+                    </ListItem>
                 ))}
-            </Grid>
-        </Box>
+            </List>
+        </Paper>
     );
 };
 
