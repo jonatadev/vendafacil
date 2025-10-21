@@ -25,6 +25,15 @@ npm install
 npm run dev
 ```
 
+## Deploy no GitHub Pages
+
+1. Faça push do código para o repositório GitHub
+2. Vá em Settings > Pages
+3. Selecione "GitHub Actions" como source
+4. O deploy será automático a cada push na branch main
+
+URL: `https://seu-usuario.github.io/vendafacil/`
+
 ## 🎨 Protótipo de Interface — VendaFácil
 
 O projeto **VendaFácil** foi desenvolvido como um e-commerce open source para pequenos empreendedores,
