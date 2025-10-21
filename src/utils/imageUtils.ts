@@ -39,5 +39,6 @@ export const resolveProductImage = (imageUrl: string): string => {
         return imageUrl;
     }
     
-    return `/assets/images/${imageUrl}`;
+    // Usar caminho absoluto com base path para GitHub Pages
+    return `/vendafacil/assets/images/${imageUrl}`;
 };
