@@ -297,7 +297,7 @@ function AdminPage() {
 
 function App() {
     return (
-        <Router>
+        <Router basename="/vendafacil">
             <UserProvider>
                 <ProductProvider>
                     <BackofficeProvider>
