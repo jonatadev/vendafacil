@@ -42,16 +42,25 @@ iniciando com a parceria da **Agro Previ Agropecuária**.
 Abaixo estão os wireframes conceituais (estilo Balsamiq) que representam as principais telas do sistema:
 
 ### 🛒 Catálogo de Produtos
-![Catálogo de Produtos](docs/wireframes/catalogo.png)
+![Catálogo de Produtos](docs/wireframes/catalogo_produtos.png)
+
+### 📦 Descrição do Produto
+![Descrição do Produto](docs/wireframes/descrição_produto.png)
 
 ### 🧺 Carrinho de Compras
-![Carrinho de Compras](docs/wireframes/carrinho.png)
+![Carrinho de Compras](docs/wireframes/carrinho_compras.png)
 
 ### 💳 Checkout
-![Tela de Checkout](docs/wireframes/checkout.png)
+![Tela de Checkout](docs/wireframes/checkout_compra.png)
+
+### 🔐 Login Administrativo
+![Login Administrativo](docs/wireframes/login_administrativo.png)
 
 ### ⚙️ Painel Administrativo
-![Painel Administrativo](docs/wireframes/admin.png)
+![Painel Administrativo](docs/wireframes/backoffice_admin.png)
+
+### 🏪 Configuração da Loja
+![Configuração da Loja](docs/wireframes/configuração_loja.png)
 
 ## Open Source
 

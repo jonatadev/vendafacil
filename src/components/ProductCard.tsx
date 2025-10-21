@@ -32,7 +32,7 @@ const ProductCard = ({ product, onProductClick }: ProductCardProps) => {
     };
 
     return (
-        <Card sx={{ height: 420, display: 'flex', flexDirection: 'column' }}>
+        <Card sx={{ height: 'auto', minHeight: 420, display: 'flex', flexDirection: 'column' }}>
             <CardMedia
                 component="img"
                 height="160"
@@ -45,7 +45,8 @@ const ProductCard = ({ product, onProductClick }: ProductCardProps) => {
                 sx={{ 
                     flexGrow: 1,
                     cursor: onProductClick ? 'pointer' : 'default',
-                    p: 2
+                    p: 2,
+                    pb: 1
                 }}
                 onClick={() => onProductClick?.(product)}
             >
@@ -62,7 +63,7 @@ const ProductCard = ({ product, onProductClick }: ProductCardProps) => {
                     Estoque: {product.stock}
                 </Typography>
             </CardContent>
-            <CardActions sx={{ p: 2, pt: 0 }}>
+            <CardActions sx={{ p: 2, pt: 1, mt: 'auto' }}>
                 <Button 
                     size="small" 
                     color="primary" 
