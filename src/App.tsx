@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import { CssBaseline, Container, AppBar, Toolbar, Typography, IconButton, Badge, Box, ThemeProvider, createTheme, Button } from '@mui/material';
+import { CssBaseline, Container, AppBar, Toolbar, Typography, IconButton, Badge, Box, ThemeProvider, createTheme } from '@mui/material';
 import { ShoppingCart as ShoppingCartIcon } from '@mui/icons-material';
 import { CartProvider, useCart } from './contexts/CartContext';
 import { ProductProvider, useProducts } from './contexts/ProductContext';
@@ -192,9 +192,7 @@ function StorePage() {
         setIsCheckout(false);
     };
 
-    const handleBackoffice = () => {
-        setIsBackoffice(true);
-    };
+
 
 
 

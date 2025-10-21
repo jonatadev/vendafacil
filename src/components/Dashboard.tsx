@@ -1,5 +1,5 @@
-import { Box, Typography, Grid, Card, CardContent, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Chip } from '@mui/material';
-import { TrendingUp, ShoppingCart, People, Inventory, Warning } from '@mui/icons-material';
+import { Box, Typography, Grid, Card, CardContent, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Chip } from '@mui/material';
+import { TrendingUp, ShoppingCart, People, Warning } from '@mui/icons-material';
 import { useProducts } from '../contexts/ProductContext';
 import { useBackoffice } from '../contexts/BackofficeContext';
 
