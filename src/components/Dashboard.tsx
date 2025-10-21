@@ -7,6 +7,17 @@ const Dashboard = () => {
     const { products } = useProducts();
     const { orders, customers } = useBackoffice();
 
+    const getStatusLabel = (status: string) => {
+        switch (status) {
+            case 'pending': return 'Pendente';
+            case 'processing': return 'Processando';
+            case 'shipped': return 'Enviado';
+            case 'delivered': return 'Entregue';
+            case 'cancelled': return 'Cancelado';
+            default: return status;
+        }
+    };
+
     const totalRevenue = orders.reduce((sum, order) => sum + order.total, 0);
     const totalOrders = orders.length;
     const totalCustomers = customers.length;
@@ -182,7 +193,7 @@ const Dashboard = () => {
                                                 <TableCell>R$ {order.total.toFixed(2)}</TableCell>
                                                 <TableCell>
                                                     <Chip 
-                                                        label={order.status} 
+                                                        label={getStatusLabel(order.status)} 
                                                         color={order.status === 'delivered' ? 'success' : 'primary'}
                                                         size="small"
                                                     />

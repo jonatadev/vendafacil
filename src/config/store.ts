@@ -21,7 +21,7 @@ export interface StoreConfig {
 // Configuração padrão - pode ser alterada por cada empresa
 export const storeConfig: StoreConfig = {
     name: 'VendaFácil',
-    logo: '/assets/images/VendaFacil.png',
+    logo: '/vendafacil/assets/images/VendaFacil.svg',
     primaryColor: '#1976d2',
     secondaryColor: '#dc004e',
     description: 'Tecnologia Livre para um Comércio Forte',
