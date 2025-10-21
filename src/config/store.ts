@@ -21,7 +21,7 @@ export interface StoreConfig {
 // Configuração padrão - pode ser alterada por cada empresa
 export const storeConfig: StoreConfig = {
     name: 'VendaFácil',
-    logo: '/vendafacil/assets/images/VendaFacil.svg',
+    logo: '/vendafacil/assets/images/VendaFacil.png',
     primaryColor: '#1976d2',
     secondaryColor: '#dc004e',
     description: 'Tecnologia Livre para um Comércio Forte',
@@ -31,7 +31,8 @@ export const storeConfig: StoreConfig = {
         address: 'São Paulo, SP'
     },
     header: {
-        style: 'gradient',
+        style: 'image',
+        backgroundImage: '/vendafacil/assets/images/VendaFacil.png',
         backgroundColor: '#1976d2',
         textColor: '#ffffff',
         height: 160
