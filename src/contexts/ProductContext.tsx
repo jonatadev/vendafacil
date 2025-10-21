@@ -14,75 +14,75 @@ const ProductContext = createContext<ProductContextType | undefined>(undefined);
 const initialProducts: Product[] = [
     {
         id: 1,
-        name: 'Ração para Cachorros',
-        description: 'Ração nutritiva para cães de todas as idades.',
-        price: 99.9,
-        imageUrl: 'racao_cachorro.png',
-        stock: 10,
-        category: 'racao'
+        name: 'Adubo NPK 10.10.10 - 1kg',
+        description: 'Fertilizante completo NPK para nutrição balanceada das plantas.',
+        price: 25.90,
+        imageUrl: 'adubo_NPK 10.10.10-1kg.jpg',
+        stock: 15,
+        category: 'fertilizantes'
     },
     {
         id: 2,
-        name: 'Ração Golden',
-        description: 'Ração premium para cães com ingredientes selecionados.',
-        price: 129.9,
-        imageUrl: 'racao_golden.png',
-        stock: 5,
-        category: 'racao'
+        name: 'Rolo de Arame Farpado 100m',
+        description: 'Arame farpado galvanizado para cercamento rural, 100 metros.',
+        price: 189.90,
+        imageUrl: 'arame_Rolo de Arame Farpado, 100 Metros, Aço Galvanizado.jpg',
+        stock: 8,
+        category: 'cercamento'
     },
     {
         id: 3,
-        name: 'Ração Gourmet',
-        description: 'Ração gourmet para cães exigentes.',
-        price: 149.9,
-        imageUrl: 'racao_gourmet.png',
-        stock: 8,
-        category: 'racao'
+        name: 'Esterco Bovino Curtido 15kg',
+        description: 'Esterco bovino curtido para enriquecimento do solo, 15kg.',
+        price: 32.50,
+        imageUrl: 'esterco_Esterco Bovino Curtido 15kg Solo Fértil Marcon.jpg',
+        stock: 20,
+        category: 'fertilizantes'
     },
     {
         id: 4,
-        name: 'Bola de Borracha',
-        description: 'Brinquedo resistente para cães de todos os tamanhos.',
-        price: 19.9,
-        imageUrl: 'bola_borracha.png',
+        name: 'Fertilizante NPK Concentrado 120ml',
+        description: 'Fertilizante líquido concentrado NPK 10-10-10 para plantas.',
+        price: 18.90,
+        imageUrl: 'fertilizante_Fertilizante NPK 10-10-10 Concentrado - 120ml.jpg',
         stock: 25,
-        category: 'brinquedos'
+        category: 'fertilizantes'
     },
     {
         id: 5,
-        name: 'Corda Dental',
-        description: 'Brinquedo que ajuda na limpeza dos dentes.',
-        price: 15.5,
-        imageUrl: 'corda_dental.png',
-        stock: 18,
-        category: 'brinquedos'
+        name: 'Vaso Cachepô Decorativo 15x13cm',
+        description: 'Vaso decorativo redondo para plantas, 15x13cm.',
+        price: 24.90,
+        imageUrl: 'vaso_Vaso Cachepô Redondo Decorativo 15x13cm.jpg',
+        stock: 12,
+        category: 'vasos'
     },
     {
         id: 6,
-        name: 'Coleira Ajustável',
-        description: 'Coleira confortável e resistente com fivela de segurança.',
-        price: 35.0,
-        imageUrl: 'coleira_ajustavel.png',
-        stock: 12,
-        category: 'acessorios'
+        name: 'Ração para Cachorros',
+        description: 'Ração nutritiva para cães de todas as idades.',
+        price: 99.90,
+        imageUrl: 'racao_cachorro.png',
+        stock: 10,
+        category: 'racoes'
     },
     {
         id: 7,
-        name: 'Comedouro Inox',
-        description: 'Comedouro em aço inoxidável, higiênico e durável.',
-        price: 28.9,
-        imageUrl: 'comedouro_inox.png',
-        stock: 15,
-        category: 'acessorios'
+        name: 'Ração Golden',
+        description: 'Ração premium para cães com ingredientes selecionados.',
+        price: 129.90,
+        imageUrl: 'racao_golden.png',
+        stock: 5,
+        category: 'racoes'
     },
     {
         id: 8,
-        name: 'Osso de Couro',
-        description: 'Osso natural para entretenimento e limpeza dental.',
-        price: 12.5,
-        imageUrl: 'osso_couro.png',
-        stock: 30,
-        category: 'brinquedos'
+        name: 'Ração Gourmet',
+        description: 'Ração gourmet para cães exigentes.',
+        price: 149.90,
+        imageUrl: 'racao_gourmet.png',
+        stock: 8,
+        category: 'racoes'
     }
 ];
 

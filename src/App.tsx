@@ -24,9 +24,10 @@ import { Product, Category } from './types';
 import { loadStoreConfig, StoreConfig } from './config/store';
 
 const categories: Category[] = [
-    { id: 'racao', name: 'Rações' },
-    { id: 'brinquedos', name: 'Brinquedos' },
-    { id: 'acessorios', name: 'Acessórios' }
+    { id: 'fertilizantes', name: 'Fertilizantes' },
+    { id: 'cercamento', name: 'Cercamento' },
+    { id: 'vasos', name: 'Vasos' },
+    { id: 'racoes', name: 'Rações' }
 ];
 
 
