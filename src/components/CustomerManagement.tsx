@@ -83,7 +83,7 @@ const CustomerManagement = () => {
                                 <TableCell>{customer.phone}</TableCell>
                                 <TableCell>{customer.orders.length}</TableCell>
                                 <TableCell>R$ {getTotalSpent(customer).toFixed(2)}</TableCell>
-                                <TableCell>{customer.createdAt.toLocaleDateString()}</TableCell>
+                                <TableCell>{new Date(customer.createdAt).toLocaleDateString()}</TableCell>
                                 <TableCell>
                                     <IconButton
                                         size="small"
@@ -121,7 +121,7 @@ const CustomerManagement = () => {
                             <Typography><strong>Email:</strong> {selectedCustomer.email}</Typography>
                             <Typography><strong>Telefone:</strong> {selectedCustomer.phone}</Typography>
                             <Typography><strong>Endereço:</strong> {selectedCustomer.address}</Typography>
-                            <Typography><strong>Cliente desde:</strong> {selectedCustomer.createdAt.toLocaleDateString()}</Typography>
+                            <Typography><strong>Cliente desde:</strong> {new Date(selectedCustomer.createdAt).toLocaleDateString()}</Typography>
                             
                             <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
                                 Estatísticas
@@ -142,7 +142,7 @@ const CustomerManagement = () => {
                                                 secondary={
                                                     <Box>
                                                         <Typography variant="body2">
-                                                            Data: {order.createdAt.toLocaleDateString()}
+                                                            Data: {new Date(order.createdAt).toLocaleDateString()}
                                                         </Typography>
                                                         <Typography variant="body2">
                                                             Itens: {order.items.map(item => `${item.product.name} (${item.quantity})`).join(', ')}

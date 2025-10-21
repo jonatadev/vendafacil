@@ -44,7 +44,7 @@ function Header({ isCartOpen, setIsCartOpen, config, onLoginClick, onAccountClic
   
   return (
     <AppBar position="static">
-      <Toolbar sx={{ minHeight: 160 }}>
+      <Toolbar sx={{ minHeight: 160, display: 'flex', alignItems: 'center' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
           {config.logo && (
             <img 
