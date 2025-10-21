@@ -7,7 +7,12 @@ export const petShopConfig: StoreConfig = {
     logo: '/assets/images/logo-petshop.png',
     primaryColor: '#4caf50',
     secondaryColor: '#ff9800',
-    description: 'Tudo para seu melhor amigo'
+    description: 'Tudo para seu melhor amigo',
+    contact: {
+        email: 'contato@petshop.com',
+        phone: '(11) 99999-9999',
+        address: 'Rua das Flores, 123'
+    }
 };
 
 export const farmaciaConfig: StoreConfig = {
@@ -15,7 +20,12 @@ export const farmaciaConfig: StoreConfig = {
     logo: '/assets/images/logo-farmacia.png',
     primaryColor: '#2196f3',
     secondaryColor: '#f44336',
-    description: 'Cuidando da sua saúde'
+    description: 'Cuidando da sua saúde',
+    contact: {
+        email: 'contato@farmacia.com',
+        phone: '(11) 88888-8888',
+        address: 'Av. Principal, 456'
+    }
 };
 
 export const roupasConfig: StoreConfig = {
@@ -23,7 +33,12 @@ export const roupasConfig: StoreConfig = {
     logo: '/assets/images/logo-roupas.png',
     primaryColor: '#9c27b0',
     secondaryColor: '#e91e63',
-    description: 'Vista-se com estilo'
+    description: 'Vista-se com estilo',
+    contact: {
+        email: 'contato@modaestilo.com',
+        phone: '(11) 77777-7777',
+        address: 'Shopping Center, Loja 10'
+    }
 };
 
 export const alimentosConfig: StoreConfig = {
@@ -31,18 +46,23 @@ export const alimentosConfig: StoreConfig = {
     logo: '/assets/images/logo-mercado.png',
     primaryColor: '#ff5722',
     secondaryColor: '#4caf50',
-    description: 'Qualidade e economia'
+    description: 'Qualidade e economia',
+    contact: {
+        email: 'contato@mercado.com',
+        phone: '(11) 66666-6666',
+        address: 'Rua do Comércio, 789'
+    }
+};
+
+const examples = {
+    petshop: petShopConfig,
+    farmacia: farmaciaConfig,
+    roupas: roupasConfig,
+    alimentos: alimentosConfig
 };
 
 // Função para aplicar configuração de exemplo
 export const applyExampleConfig = (configName: keyof typeof examples) => {
-    const examples = {
-        petshop: petShopConfig,
-        farmacia: farmaciaConfig,
-        roupas: roupasConfig,
-        alimentos: alimentosConfig
-    };
-    
     const config = examples[configName];
     if (config) {
         localStorage.setItem('store_config', JSON.stringify(config));
