@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Typography, Button, CardActions, IconButton, Box } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Button, CardActions, IconButton } from '@mui/material';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import { Product } from '../types';
 import { useCart } from '../contexts/CartContext';

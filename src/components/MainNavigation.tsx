@@ -8,7 +8,7 @@ import {
     Typography,
     Badge
 } from '@mui/material';
-import { Home, Category, LocalOffer, ContactMail, ExpandMore } from '@mui/icons-material';
+import { Home, Category, LocalOffer, ContactMail } from '@mui/icons-material';
 import { Category as CategoryType } from '../types';
 
 interface MainNavigationProps {
@@ -32,7 +32,7 @@ const MainNavigation = ({ categories, selectedCategory, onCategoryChange, produc
         setCurrentTab(categoryId === 'all' ? 0 : 1);
     };
 
-    const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
         setCurrentTab(newValue);
         if (newValue === 0) {
             onCategoryChange('all');

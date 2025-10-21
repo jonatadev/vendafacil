@@ -20,7 +20,7 @@ import {
     Button,
     TextField
 } from '@mui/material';
-import { ArrowBack, Delete, Favorite } from '@mui/icons-material';
+import { ArrowBack, Delete } from '@mui/icons-material';
 import { useUser } from '../contexts/UserContext';
 import { useCart } from '../contexts/CartContext';
 import { resolveProductImage } from '../utils/imageUtils';

@@ -13,7 +13,7 @@ import {
     AccountCircle,
     ShoppingBag,
     Favorite,
-    Settings,
+
     Logout,
     Login
 } from '@mui/icons-material';

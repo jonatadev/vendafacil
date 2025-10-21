@@ -75,7 +75,8 @@ const Settings = () => {
             ...storeConfig,
             header: {
                 ...storeConfig.header,
-                [field]: value
+                [field]: value,
+                style: (field === 'style' ? value : storeConfig.header?.style || 'gradient') as 'image' | 'solid' | 'gradient'
             }
         };
         setStoreConfig(newConfig);
