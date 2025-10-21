@@ -25,6 +25,25 @@ npm install
 npm run dev
 ```
 
+## 🎨 Protótipo de Interface — VendaFácil
+
+O projeto **VendaFácil** foi desenvolvido como um e-commerce open source para pequenos empreendedores,
+iniciando com a parceria da **Agro Previ Agropecuária**.
+
+Abaixo estão os wireframes conceituais (estilo Balsamiq) que representam as principais telas do sistema:
+
+### 🛒 Catálogo de Produtos
+![Catálogo de Produtos](docs/wireframes/catalogo.png)
+
+### 🧺 Carrinho de Compras
+![Carrinho de Compras](docs/wireframes/carrinho.png)
+
+### 💳 Checkout
+![Tela de Checkout](docs/wireframes/checkout.png)
+
+### ⚙️ Painel Administrativo
+![Painel Administrativo](docs/wireframes/admin.png)
+
 ## Open Source
 
 Este é um software livre e de código aberto. Qualquer pessoa pode usar, modificar e distribuir este código livremente. O projeto está disponível sob os termos da licença MIT.
