@@ -64,7 +64,7 @@ const UserAccount = ({ onBack, initialTab = 0 }: UserAccountProps) => {
         city: '', 
         state: '' 
     });
-    const [profilePhoto, setProfilePhoto] = useState<string | null>(null);
+    const [profilePhoto, setProfilePhoto] = useState<string | undefined>(undefined);
     const [passwordData, setPasswordData] = useState({ current: '', new: '', confirm: '' });
     const [showPasswordFields, setShowPasswordFields] = useState(false);
     const { user, wishlist, userOrders, removeFromWishlist, updateUser } = useUser();
@@ -83,7 +83,7 @@ const UserAccount = ({ onBack, initialTab = 0 }: UserAccountProps) => {
                 city: user.city || '',
                 state: user.state || ''
             });
-            setProfilePhoto(user.profilePhoto || null);
+            setProfilePhoto(user.profilePhoto || undefined);
             setIsEditing(true);
         }
     };
@@ -193,7 +193,7 @@ const UserAccount = ({ onBack, initialTab = 0 }: UserAccountProps) => {
                         <Grid item xs={12} md={6}>
                             <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
                                 <Avatar
-                                    src={isEditing ? (profilePhoto ?? undefined) : (user.profilePhoto ?? undefined)}
+                                    src={isEditing ? profilePhoto : user.profilePhoto}
                                     sx={{ width: 80, height: 80, mr: 2 }}
                                 >
                                     {user.name.charAt(0).toUpperCase()}
