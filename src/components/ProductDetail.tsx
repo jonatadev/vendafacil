@@ -13,6 +13,7 @@ import {
 import { ArrowBack, Add, Remove } from '@mui/icons-material';
 import { Product } from '../types';
 import { useCart } from '../contexts/CartContext';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface ProductDetailProps {
     product: Product;
@@ -47,7 +48,7 @@ const ProductDetail = ({ product, onBack, relatedProducts, onProductClick }: Pro
                 <Grid item xs={12} md={6}>
                     <Paper sx={{ p: 2, textAlign: 'center' }}>
                         <img
-                            src={`/assets/images/${product.imageUrl}`}
+                            src={resolveProductImage(product.imageUrl)}
                             alt={product.name}
                             style={{
                                 width: '100%',
@@ -157,7 +158,7 @@ const ProductDetail = ({ product, onBack, relatedProducts, onProductClick }: Pro
                                     onClick={() => onProductClick(relatedProduct)}
                                 >
                                     <img
-                                        src={`/assets/images/${relatedProduct.imageUrl}`}
+                                        src={resolveProductImage(relatedProduct.imageUrl)}
                                         alt={relatedProduct.name}
                                         style={{
                                             width: '100%',

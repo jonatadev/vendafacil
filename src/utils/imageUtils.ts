@@ -77,5 +77,7 @@ export const resolveProductImage = (imageUrl: string): string => {
     }
     
     // Usar caminho absoluto com base path para GitHub Pages
-    return `/vendafacil/assets/images/${imageUrl}`;
+    // Codificar a URL para lidar com caracteres especiais
+    const encodedImageUrl = encodeURIComponent(imageUrl);
+    return `/vendafacil/assets/images/${encodedImageUrl}`;
 };
