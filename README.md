@@ -2,6 +2,14 @@
 
 Uma aplicação de e-commerce moderna desenvolvida com React, TypeScript e Material-UI.
 
+## 🌎 Impacto Social e Alinhamento ao ODS 9
+
+A prática extensionista desenvolvida com a Agro Previ Agropecuária gerou impacto real na comunidade local, ao oferecer uma solução tecnológica acessível para um pequeno empreendimento que até então não possuía presença digital.
+
+O projeto está alinhado ao ODS 9 – Indústria, Inovação e Infraestrutura, da Agenda 2030 da ONU, pois promove o desenvolvimento de uma infraestrutura digital livre, aberta e replicável, que fortalece a inovação e democratiza o acesso à tecnologia.
+
+Com o VendaFácil, pequenos empreendedores podem gerenciar produtos, vendas e clientes sem custos de licença, incentivando a digitalização de negócios locais e o fortalecimento da economia regional.
+
 ## Funcionalidades
 
 - Catálogo de produtos
